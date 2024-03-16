@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+      body {
+        background-color: #ea4d0a65;
+        font-family: "Roboto", sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        color: #343a40;
+        font-size: 32px;
+        margin-bottom: 30px;
+        letter-spacing: 1px; 
+      }
+
+      table {
+        background-color: #f0efdd;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgb(251, 251, 251);
+      }
+
+      th,
+      td {
+        border: 1px solid #dee2e6;
+        padding: 8px;
+        text-align: left;
+      }
+
+      .btn-options {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+        border: 1px solid #0056b3;
+      }
+
+      .btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+        border: 1px solid #c82333;
+      }
+
+      .btn-warning {
+        background-color: #ffc107;
+        color: #212529;
+        border: 1px solid #ffc107;
+      }
+
+      .btn-options:hover {
+        background-color: #0056b3;
+        border: 1px solid #004080;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Student Information</h1>
+
+      
+      
+      <div class="row">
+         <div class="col-md-6">
+             <form action="/delete_student" method="post" class="form-inline">
+                 <div class="form-group">
+                     <label for="studentId">Student ID:</label>
+                     <input
+                     type="text"
+                     class="form-control"
+                     id="studentId"
+                     name="student_id"
+                     required
+                     />
+                 </div>
+                 <button type="submit" class="btn btn-danger">DELETE</button>
+             </form>
+         </div>
+     
+         <div class="col-md-6">
+             <form action="/search_student_by_name" method="post" class="form-inline pull-right">
+                 <div class="form-group">
+                     <label for="studentName">Student Name:</label>
+                     <input
+                     type="text"
+                     class="form-control"
+                     id="updateId"
+                     name="update_id"
+                     required
+                     />
+                 </div>
+                 <button type="submit" class="btn btn-success">Search by Name</button>
+             </form>
+         </div>
+     </div>
+     
+
+
+      
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Pin code</th>
+            <th>State</th>
+            <th>Country</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+          {% for student in register %}
+          <tr>
+            <td>{{ student[0] }}</td>
+            <td>{{ student[1] }}</td>
+            <td>{{ student[2]}}</td>
+            <td>{{ student[3]}}</td>
+            <td>{{ student[4] }}</td>
+            <td>{{ student[5] }}</td>
+            <td>{{ student[6] }}</td>
+            <td>{{ student[7] }}</td>
+            <td>{{ student[8] }}</td>
+            <td>{{ student[9] }}</td>
+            <td>{{ student[10] }}</td>
+            <td>{{ student[11] }}</td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      
+      <div class="row">
+        <div class="col-md-4">
+          <a href="{{url_for('index')}}" class="btn btn-options btn-primary"
+            >Add Student</a
+          >
+          <!--            <input type="reset" class="btn-reset" value="ADDSTUDENT" onclick="ADDSTUDENT()">-->
+        </div>
+        <!--         <div class="col-md-4">-->
+        <!--           <a href="{{url_for('delete_student')}}" class="btn btn-options btn-danger">Delete Student</a>-->
+        <!--         </div>-->
+        <!--         <div class="col-md-4">-->
+        <!--           <a href="/update_student" class="btn btn-options btn-warning">Update Student</a>-->
+        <!--         </div>-->
+      </div>
+    </div>
+    <script>
+      function ADDSTUDENT() {
+        
+        window.location.href = '{{url_for("index")}}';
+      }
+    </script>
+    <script>
+      function fetch_name() {
+        
+        window.location.href = '{{url_for("index")}}';
+      }
+    </script>
+  </body>
+</html>
+
+<!--</html>-->
